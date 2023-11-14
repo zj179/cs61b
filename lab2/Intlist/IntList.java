@@ -84,11 +84,11 @@ public class IntList {
         if (A == null){
             return B;
         }
-    
-        while (A.rest != null){
-            A = A.rest;
+        IntList L = A
+        while (L.rest != null){
+            L = L.rest;
         }
-        A.rest = B;
+        L.rest = B;
 
         return A;
     }
@@ -99,10 +99,10 @@ public class IntList {
      */
     public static IntList catenate(IntList A, IntList B) {
         if(A == null){
-            return new IntList(B.first, B.rest);
+            return B;
         }
         if(B == null){
-            return new IntList(A.first, A.rest);
+            return A;
         }
         return new IntList(A.first, catenate(A.rest,B));
     }
