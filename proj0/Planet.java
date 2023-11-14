@@ -30,7 +30,7 @@ public class Planet {
     public double calcDistance(Planet other){
         double xxDif = this.xxPos - other.xxPos;
         double yyDif = this.yyPos - other.yyPos;
-        return Math.sqrt(xxDif * xxDif - yyDif * yyDif);
+        return Math.sqrt(xxDif * xxDif + yyDif * yyDif);
     }
     public double calcForceExertedBy(Planet other){
         double dist = calcDistance(other);
