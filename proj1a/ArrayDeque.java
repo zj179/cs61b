@@ -31,21 +31,23 @@ public class ArrayDeque<T> {
         return  (double) size / capacity < 0.25;
     }
     public void addFirst(T item){
-        if(isFull()){
-            resize(capacity * 2);
-        }
+
         size += 1;
         first = (first - 1 + capacity) % capacity;
         items[first] = item;
-
-    }
-    public void addLast(T item){
         if(isFull()){
             resize(capacity * 2);
         }
+
+    }
+    public void addLast(T item){
+
         size += 1;
         items[last] = item;
         last = (last + 1) % capacity;
+        if(isFull()){
+            resize(capacity * 2);
+        }
 
     }
     public boolean isEmpty(){
@@ -72,7 +74,7 @@ public class ArrayDeque<T> {
         T item = items[first];
         first = (first +1) % capacity;
         if(isLowUsageRate()){
-            resize((int) (capacity * 0.25));
+            resize((int) (capacity * 0.5));
         }
         return item;
     }
@@ -84,7 +86,7 @@ public class ArrayDeque<T> {
         T item = items[(last-1) % capacity];
         last = (last - 1) % capacity;
         if(isLowUsageRate()) {
-            resize((int) (capacity * 0.25));
+            resize((int) (capacity * 0.5));
         }
         return item;
     }
@@ -95,7 +97,6 @@ public class ArrayDeque<T> {
         return items[(first+index)%capacity];
     }
     
-
 
 
 }
