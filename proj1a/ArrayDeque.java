@@ -65,27 +65,27 @@ public class ArrayDeque<T> {
         }
     }
     public T removeFirst(){
-        if(isLowUsageRate()){
-            resize((int) (capacity * 0.25));
-        }
         if(isEmpty()){
             return null;
         }
         size -= 1;
         T item = items[first];
         first = (first +1) % capacity;
+        if(isLowUsageRate()){
+            resize((int) (capacity * 0.25));
+        }
         return item;
     }
     public T removeLast(){
-        if(isLowUsageRate()) {
-            resize((int) (capacity * 0.25));
-        }
         if(isEmpty()){
             return null;
         }
         size -= 1;
         T item = items[(last-1) % capacity];
         last = (last - 1) % capacity;
+        if(isLowUsageRate()) {
+            resize((int) (capacity * 0.25));
+        }
         return item;
     }
     public T get(int index){
@@ -95,5 +95,7 @@ public class ArrayDeque<T> {
         return items[(first+index)%capacity];
     }
     
+
+
 
 }
