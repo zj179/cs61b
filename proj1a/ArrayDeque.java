@@ -83,8 +83,8 @@ public class ArrayDeque<T> {
             return null;
         }
         size -= 1;
-        T item = items[(last-1) % capacity];
-        last = (last - 1) % capacity;
+        T item = items[(last-1 + capacity) % capacity];
+        last = (last - 1 + capacity) % capacity;
         if(isLowUsageRate()) {
             resize((int) (capacity * 0.5));
         }
@@ -96,7 +96,7 @@ public class ArrayDeque<T> {
         }
         return items[(first+index)%capacity];
     }
-    
+
 
 
 }
